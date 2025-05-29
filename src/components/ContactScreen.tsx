@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,14 +8,16 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
 /**
- * Componente da Tela de Contato
- * Fornece formulário de contato e informações de contato profissional
+ * Componente da Tela de Contato - Versão Mobile
+ * Formulário de contato otimizado para dispositivos móveis
  */
 const ContactScreen: React.FC = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,17 +34,18 @@ const ContactScreen: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simular envio de formulário
+    // Simular envio
     setTimeout(() => {
       toast({
-        title: "Mensagem Enviada com Sucesso",
-        description: "Obrigado pela sua consulta. Entraremos em contato em breve.",
+        title: "Mensagem Enviada",
+        description: "Sua mensagem foi enviada com sucesso. Retornaremos em breve.",
       });
       
-      // Resetar formulário
       setFormData({
         name: '',
         email: '',
+        phone: '',
+        subject: '',
         message: ''
       });
       setIsSubmitting(false);
@@ -53,82 +56,94 @@ const ContactScreen: React.FC = () => {
     {
       icon: Mail,
       label: 'E-mail',
-      value: 'odonto.forense@tads035.edu.br',
-      description: 'Consultas profissionais e suporte'
+      value: 'suporte@dentefier.com.br',
+      action: 'mailto:suporte@dentefier.com.br'
     },
     {
       icon: Phone,
       label: 'Telefone',
-      value: '+55 (11) 1234-5678',
-      description: 'Consultoria forense de emergência'
+      value: '+55 (11) 9876-5432',
+      action: 'tel:+5511987654321'
     },
     {
       icon: MapPin,
       label: 'Localização',
-      value: 'Departamento de Ciências Forenses',
-      description: 'Centro de Pesquisa TADS035'
+      value: 'São Paulo - SP',
+      action: null
     }
   ];
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in space-y-6">
       {/* Cabeçalho */}
-      <div className="text-center mb-8">
+      <div className="text-center">
         <div className="w-16 h-16 bg-dental-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Phone className="w-8 h-8 text-white" />
+          <MessageSquare className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2 md:text-3xl">Entre em Contato</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Entre em contato com nossa equipe de odontologia forense para suporte profissional, 
-          consultas ou oportunidades de colaboração.
+        <h1 className="text-xl font-bold text-gray-800 mb-2">Contato</h1>
+        <p className="text-gray-600 text-sm leading-relaxed">
+          Entre em contato conosco para suporte técnico, 
+          dúvidas ou colaborações
         </p>
       </div>
 
-      {/* Cards de Informações de Contato */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      {/* Informações de Contato Rápido */}
+      <div className="grid grid-cols-1 gap-3">
         {contactInfo.map((info, index) => {
           const Icon = info.icon;
           return (
             <div 
               key={index}
-              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow duration-200"
+              className="bg-white rounded-xl p-4 shadow-sm border border-gray-100"
             >
-              <div className="w-10 h-10 bg-dental-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <Icon className="w-5 h-5 text-dental-600" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-dental-100 rounded-lg flex items-center justify-center">
+                  <Icon className="w-5 h-5 text-dental-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-800 text-sm">{info.label}</h3>
+                  {info.action ? (
+                    <a 
+                      href={info.action}
+                      className="text-dental-600 font-medium text-sm hover:underline"
+                    >
+                      {info.value}
+                    </a>
+                  ) : (
+                    <p className="text-gray-600 text-sm">{info.value}</p>
+                  )}
+                </div>
               </div>
-              <h3 className="font-semibold text-gray-800 mb-1">{info.label}</h3>
-              <p className="text-dental-600 font-medium mb-1">{info.value}</p>
-              <p className="text-gray-500 text-xs">{info.description}</p>
             </div>
           );
         })}
       </div>
 
       {/* Formulário de Contato */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">Envie-nos uma Mensagem</h2>
+      <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">Envie uma Mensagem</h2>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-gray-700 font-medium">
-                Nome Completo *
-              </Label>
-              <Input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Dr. João Silva"
-                required
-                className="border-gray-200 focus:border-dental-500 focus:ring-dental-500"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-700 font-medium">
-                Endereço de E-mail *
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="name" className="text-sm font-medium text-gray-700">
+              Nome Completo *
+            </Label>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Seu nome completo"
+              required
+              className="mt-1"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 gap-3">
+            <div>
+              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                E-mail *
               </Label>
               <Input
                 id="email"
@@ -136,15 +151,46 @@ const ContactScreen: React.FC = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="joao.silva@exemplo.com"
+                placeholder="seu@email.com"
                 required
-                className="border-gray-200 focus:border-dental-500 focus:ring-dental-500"
+                className="mt-1"
               />
             </div>
           </div>
+
+          <div>
+            <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
+              Telefone
+            </Label>
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="(11) 99999-9999"
+              className="mt-1"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="subject" className="text-sm font-medium text-gray-700">
+              Assunto *
+            </Label>
+            <Input
+              id="subject"
+              name="subject"
+              type="text"
+              value={formData.subject}
+              onChange={handleInputChange}
+              placeholder="Sobre o que você gostaria de falar?"
+              required
+              className="mt-1"
+            />
+          </div>
           
-          <div className="space-y-2">
-            <Label htmlFor="message" className="text-gray-700 font-medium">
+          <div>
+            <Label htmlFor="message" className="text-sm font-medium text-gray-700">
               Mensagem *
             </Label>
             <Textarea
@@ -152,10 +198,10 @@ const ContactScreen: React.FC = () => {
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Por favor, descreva sua consulta, necessidades de consultoria ou como podemos auxiliar com seus requisitos de odontologia forense..."
-              rows={5}
+              placeholder="Descreva sua dúvida, sugestão ou necessidade..."
+              rows={4}
               required
-              className="border-gray-200 focus:border-dental-500 focus:ring-dental-500 resize-none"
+              className="mt-1 resize-none"
             />
           </div>
           
@@ -167,7 +213,7 @@ const ContactScreen: React.FC = () => {
             {isSubmitting ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Enviando Mensagem...
+                Enviando...
               </>
             ) : (
               <>
@@ -178,14 +224,24 @@ const ContactScreen: React.FC = () => {
           </Button>
         </form>
         
-        <div className="mt-6 p-4 bg-dental-50 rounded-lg border border-dental-200">
+        <div className="mt-4 p-3 bg-dental-50 rounded-lg border border-dental-200">
           <div className="flex items-center gap-2 text-dental-800">
             <CheckCircle className="w-4 h-4" />
-            <span className="text-sm font-medium">Garantia de Resposta Profissional</span>
+            <span className="text-sm font-medium">Resposta Garantida</span>
           </div>
           <p className="text-dental-700 text-xs mt-1">
-            Respondemos a todas as consultas profissionais em 24-48 horas durante dias úteis.
+            Respondemos todas as mensagens em até 24 horas úteis.
           </p>
+        </div>
+      </div>
+
+      {/* Suporte Técnico */}
+      <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+        <h3 className="font-semibold text-gray-800 mb-3">Suporte Técnico</h3>
+        <div className="space-y-2 text-sm text-gray-600">
+          <p>• Segunda a Sexta: 8h às 18h</p>
+          <p>• Emergências: Plantão 24h</p>
+          <p>• Tempo de resposta: Até 4 horas</p>
         </div>
       </div>
     </div>
