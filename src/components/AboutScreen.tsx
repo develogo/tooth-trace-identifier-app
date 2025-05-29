@@ -3,72 +3,72 @@ import React from 'react';
 import { BookOpen, GraduationCap, Award, Target } from 'lucide-react';
 
 /**
- * About Screen Component
- * Provides detailed information about the app, course context, and forensic dentistry support
+ * Componente da Tela Sobre
+ * Fornece informações detalhadas sobre o app, contexto do curso e suporte à odontologia forense
  */
 const AboutScreen: React.FC = () => {
   const aboutSections = [
     {
       icon: GraduationCap,
-      title: 'Academic Foundation',
-      content: 'Developed as part of the TADS035 course curriculum, ensuring academic rigor and professional standards in forensic dentistry education.'
+      title: 'Base Acadêmica',
+      content: 'Desenvolvido como parte do currículo do curso TADS035, garantindo rigor acadêmico e padrões profissionais na educação em odontologia forense.'
     },
     {
       icon: Target,
-      title: 'Core Mission',
-      content: 'Our primary goal is to support forensic dental identification processes by providing professionals with reliable, scientifically-backed tools and methodologies.'
+      title: 'Missão Principal',
+      content: 'Nosso objetivo principal é apoiar processos de identificação dental forense fornecendo aos profissionais ferramentas confiáveis e metodologias cientificamente fundamentadas.'
     },
     {
       icon: Award,
-      title: 'Professional Standards',
-      content: 'Built following international forensic dentistry protocols and best practices recognized by professional associations worldwide.'
+      title: 'Padrões Profissionais',
+      content: 'Construído seguindo protocolos internacionais de odontologia forense e melhores práticas reconhecidas por associações profissionais mundiais.'
     }
   ];
 
   return (
     <div className="animate-fade-in">
-      {/* Header Section */}
+      {/* Seção Cabeçalho */}
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-dental-600 rounded-full flex items-center justify-center mx-auto mb-4">
           <BookOpen className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2 md:text-3xl">About Dentefier</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-2 md:text-3xl">Sobre o Dentefier</h1>
         <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          A comprehensive digital solution designed to advance forensic dentistry practices 
-          and support professional identification processes.
+          Uma solução digital abrangente projetada para avançar as práticas de odontologia forense 
+          e apoiar processos profissionais de identificação.
         </p>
       </div>
 
-      {/* Main Content Card */}
+      {/* Card de Conteúdo Principal */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Application Overview</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Visão Geral da Aplicação</h2>
         <div className="prose prose-gray max-w-none">
           <p className="text-gray-600 leading-relaxed mb-4">
-            Dentefier represents the intersection of technology and forensic science, 
-            specifically tailored for odontological identification processes. This application 
-            serves as a comprehensive toolkit for forensic dentistry professionals working 
-            in investigative scenarios.
+            O Dentefier representa a interseção entre tecnologia e ciência forense, 
+            especificamente adaptado para processos de identificação odontológica. Esta aplicação 
+            serve como um kit de ferramentas abrangente para profissionais de odontologia forense trabalhando 
+            em cenários investigativos.
           </p>
           
           <p className="text-gray-600 leading-relaxed mb-4">
-            As part of the <span className="font-semibold text-dental-600">TADS035 course</span>, 
-            this project demonstrates the practical application of digital solutions in 
-            forensic contexts, bridging theoretical knowledge with real-world professional needs.
+            Como parte do <span className="font-semibold text-dental-600">curso TADS035</span>, 
+            este projeto demonstra a aplicação prática de soluções digitais em 
+            contextos forenses, conectando conhecimento teórico com necessidades profissionais do mundo real.
           </p>
 
           <div className="bg-forensic-50 rounded-lg p-4 border border-forensic-200">
-            <h3 className="font-semibold text-forensic-800 mb-2">Key Capabilities</h3>
+            <h3 className="font-semibold text-forensic-800 mb-2">Principais Capacidades</h3>
             <ul className="text-forensic-700 text-sm space-y-1">
-              <li>• Systematic approach to dental evidence documentation</li>
-              <li>• Integration with established forensic identification protocols</li>
-              <li>• Educational resources for continuous professional development</li>
-              <li>• Streamlined workflow for investigative processes</li>
+              <li>• Abordagem sistemática para documentação de evidências dentárias</li>
+              <li>• Integração com protocolos estabelecidos de identificação forense</li>
+              <li>• Recursos educacionais para desenvolvimento profissional contínuo</li>
+              <li>• Fluxo de trabalho simplificado para processos investigativos</li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Features Section */}
+      {/* Seção de Recursos */}
       <div className="space-y-4">
         {aboutSections.map((section, index) => {
           const Icon = section.icon;
@@ -91,13 +91,13 @@ const AboutScreen: React.FC = () => {
         })}
       </div>
 
-      {/* Course Information */}
+      {/* Informações do Curso */}
       <div className="mt-8 bg-gradient-to-r from-dental-50 to-forensic-50 rounded-xl p-6 border border-dental-200">
         <div className="text-center">
-          <h3 className="font-semibold text-gray-800 mb-2">TADS035 Course Project</h3>
+          <h3 className="font-semibold text-gray-800 mb-2">Projeto do Curso TADS035</h3>
           <p className="text-gray-600 text-sm leading-relaxed">
-            This application demonstrates advanced concepts in forensic technology, 
-            showcasing the integration of digital tools in professional forensic dentistry workflows.
+            Esta aplicação demonstra conceitos avançados em tecnologia forense, 
+            mostrando a integração de ferramentas digitais em fluxos de trabalho profissionais de odontologia forense.
           </p>
         </div>
       </div>

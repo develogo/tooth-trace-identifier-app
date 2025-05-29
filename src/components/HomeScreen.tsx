@@ -3,31 +3,31 @@ import React from 'react';
 import { Microscope, Shield, Users, ArrowRight } from 'lucide-react';
 
 /**
- * Home Screen Component
- * Displays welcome message, app purpose, and relevant forensic dentistry imagery
+ * Componente da Tela Inicial
+ * Exibe mensagem de boas-vindas, propósito do app e imagens relevantes de odontologia forense
  */
 const HomeScreen: React.FC = () => {
   const features = [
     {
       icon: Microscope,
-      title: 'Scientific Analysis',
-      description: 'Advanced tools for dental evidence examination'
+      title: 'Análise Científica',
+      description: 'Ferramentas avançadas para exame de evidências dentárias'
     },
     {
       icon: Shield,
-      title: 'Forensic Standards',
-      description: 'Compliant with international forensic protocols'
+      title: 'Padrões Forenses',
+      description: 'Compatível com protocolos forenses internacionais'
     },
     {
       icon: Users,
-      title: 'Professional Network',
-      description: 'Connect with forensic dentistry experts'
+      title: 'Rede Profissional',
+      description: 'Conecte-se com especialistas em odontologia forense'
     }
   ];
 
   return (
     <div className="animate-fade-in">
-      {/* Hero Section */}
+      {/* Seção Hero */}
       <div className="dental-gradient rounded-2xl p-8 text-white mb-8 relative overflow-hidden">
         <div className="forensic-pattern absolute inset-0 opacity-20"></div>
         <div className="relative z-10">
@@ -37,39 +37,39 @@ const HomeScreen: React.FC = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold md:text-3xl">Dentefier</h1>
-              <p className="text-blue-100 text-sm md:text-base">Forensic Dentistry Assistant</p>
+              <p className="text-blue-100 text-sm md:text-base">Assistente de Odontologia Forense</p>
             </div>
           </div>
           
           <p className="text-lg leading-relaxed mb-6 md:text-xl">
-            Welcome to your comprehensive digital companion for forensic dental identification. 
-            Streamlining the odontological investigation process for professionals.
+            Bem-vindo ao seu companheiro digital abrangente para identificação odontológica forense. 
+            Simplificando o processo de investigação odontológica para profissionais.
           </p>
           
           <div className="flex items-center gap-2 text-blue-100">
-            <span className="text-sm">Part of TADS035 Course</span>
+            <span className="text-sm">Parte do Curso TADS035</span>
             <ArrowRight size={16} />
           </div>
         </div>
       </div>
 
-      {/* App Purpose Section */}
+      {/* Seção Propósito do App */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-8">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Purpose & Mission</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Propósito e Missão</h2>
         <p className="text-gray-600 leading-relaxed mb-4">
-          Dentefier is designed to assist forensic professionals in the critical process of 
-          odontological identification during forensic investigations. Our app provides 
-          essential tools and resources to support accurate and efficient dental evidence analysis.
+          O Dentefier foi projetado para auxiliar profissionais forenses no processo crítico de 
+          identificação odontológica durante investigações forenses. Nosso app fornece 
+          ferramentas e recursos essenciais para apoiar a análise precisa e eficiente de evidências dentárias.
         </p>
         <div className="bg-dental-50 rounded-lg p-4 border-l-4 border-dental-500">
           <p className="text-dental-800 font-medium text-sm">
-            🦷 Supporting forensic dentistry professionals in delivering justice through 
-            scientific dental identification methods.
+            🦷 Apoiando profissionais de odontologia forense na entrega de justiça através 
+            de métodos científicos de identificação dentária.
           </p>
         </div>
       </div>
 
-      {/* Features Grid */}
+      {/* Grade de Recursos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {features.map((feature, index) => {
           const Icon = feature.icon;

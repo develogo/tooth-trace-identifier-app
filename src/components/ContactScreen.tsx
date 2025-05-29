@@ -8,8 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
 /**
- * Contact Screen Component
- * Provides contact form and professional contact information
+ * Componente da Tela de Contato
+ * Fornece formulário de contato e informações de contato profissional
  */
 const ContactScreen: React.FC = () => {
   const { toast } = useToast();
@@ -32,14 +32,14 @@ const ContactScreen: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Simular envio de formulário
     setTimeout(() => {
       toast({
-        title: "Message Sent Successfully",
-        description: "Thank you for your inquiry. We'll get back to you soon.",
+        title: "Mensagem Enviada com Sucesso",
+        description: "Obrigado pela sua consulta. Entraremos em contato em breve.",
       });
       
-      // Reset form
+      // Resetar formulário
       setFormData({
         name: '',
         email: '',
@@ -52,39 +52,39 @@ const ContactScreen: React.FC = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'forensic.dental@tads035.edu',
-      description: 'Professional inquiries and support'
+      label: 'E-mail',
+      value: 'odonto.forense@tads035.edu.br',
+      description: 'Consultas profissionais e suporte'
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      description: 'Emergency forensic consultation'
+      label: 'Telefone',
+      value: '+55 (11) 1234-5678',
+      description: 'Consultoria forense de emergência'
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'Forensic Sciences Department',
-      description: 'TADS035 Research Center'
+      label: 'Localização',
+      value: 'Departamento de Ciências Forenses',
+      description: 'Centro de Pesquisa TADS035'
     }
   ];
 
   return (
     <div className="animate-fade-in">
-      {/* Header */}
+      {/* Cabeçalho */}
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-dental-600 rounded-full flex items-center justify-center mx-auto mb-4">
           <Phone className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2 md:text-3xl">Contact Us</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-2 md:text-3xl">Entre em Contato</h1>
         <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Get in touch with our forensic dentistry team for professional support, 
-          inquiries, or collaboration opportunities.
+          Entre em contato com nossa equipe de odontologia forense para suporte profissional, 
+          consultas ou oportunidades de colaboração.
         </p>
       </div>
 
-      {/* Contact Information Cards */}
+      {/* Cards de Informações de Contato */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {contactInfo.map((info, index) => {
           const Icon = info.icon;
@@ -104,15 +104,15 @@ const ContactScreen: React.FC = () => {
         })}
       </div>
 
-      {/* Contact Form */}
+      {/* Formulário de Contato */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">Send us a Message</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-6">Envie-nos uma Mensagem</h2>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-gray-700 font-medium">
-                Full Name *
+                Nome Completo *
               </Label>
               <Input
                 id="name"
@@ -120,7 +120,7 @@ const ContactScreen: React.FC = () => {
                 type="text"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="Dr. John Smith"
+                placeholder="Dr. João Silva"
                 required
                 className="border-gray-200 focus:border-dental-500 focus:ring-dental-500"
               />
@@ -128,7 +128,7 @@ const ContactScreen: React.FC = () => {
             
             <div className="space-y-2">
               <Label htmlFor="email" className="text-gray-700 font-medium">
-                Email Address *
+                Endereço de E-mail *
               </Label>
               <Input
                 id="email"
@@ -136,7 +136,7 @@ const ContactScreen: React.FC = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="john.smith@example.com"
+                placeholder="joao.silva@exemplo.com"
                 required
                 className="border-gray-200 focus:border-dental-500 focus:ring-dental-500"
               />
@@ -145,14 +145,14 @@ const ContactScreen: React.FC = () => {
           
           <div className="space-y-2">
             <Label htmlFor="message" className="text-gray-700 font-medium">
-              Message *
+              Mensagem *
             </Label>
             <Textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Please describe your inquiry, consultation needs, or how we can assist with your forensic dentistry requirements..."
+              placeholder="Por favor, descreva sua consulta, necessidades de consultoria ou como podemos auxiliar com seus requisitos de odontologia forense..."
               rows={5}
               required
               className="border-gray-200 focus:border-dental-500 focus:ring-dental-500 resize-none"
@@ -167,12 +167,12 @@ const ContactScreen: React.FC = () => {
             {isSubmitting ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Sending Message...
+                Enviando Mensagem...
               </>
             ) : (
               <>
                 <Send className="w-4 h-4" />
-                Send Message
+                Enviar Mensagem
               </>
             )}
           </Button>
@@ -181,10 +181,10 @@ const ContactScreen: React.FC = () => {
         <div className="mt-6 p-4 bg-dental-50 rounded-lg border border-dental-200">
           <div className="flex items-center gap-2 text-dental-800">
             <CheckCircle className="w-4 h-4" />
-            <span className="text-sm font-medium">Professional Response Guarantee</span>
+            <span className="text-sm font-medium">Garantia de Resposta Profissional</span>
           </div>
           <p className="text-dental-700 text-xs mt-1">
-            We respond to all professional inquiries within 24-48 hours during business days.
+            Respondemos a todas as consultas profissionais em 24-48 horas durante dias úteis.
           </p>
         </div>
       </div>

@@ -9,24 +9,24 @@ interface NavigationProps {
 }
 
 /**
- * Navigation component for mobile app simulation
- * Provides tab-based navigation between Home, About, and Contact screens
+ * Componente de navegação para simulação de app móvel
+ * Fornece navegação por abas entre as telas Início, Sobre e Contato
  */
 const Navigation: React.FC<NavigationProps> = ({ activeScreen, onScreenChange }) => {
   const navItems = [
     {
       id: 'home' as const,
-      label: 'Home',
+      label: 'Início',
       icon: Home,
     },
     {
       id: 'about' as const,
-      label: 'About',
+      label: 'Sobre',
       icon: Info,
     },
     {
       id: 'contact' as const,
-      label: 'Contact',
+      label: 'Contato',
       icon: Phone,
     },
   ];
