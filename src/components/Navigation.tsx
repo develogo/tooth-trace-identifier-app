@@ -42,7 +42,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeScreen, onScreenChange })
   ];
 
   return (
-    <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-200 px-2 py-2 shadow-lg">
+    <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-gray-900 border-t border-gray-800 px-2 py-2 shadow-lg">
       <div className="flex justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -55,8 +55,8 @@ const Navigation: React.FC<NavigationProps> = ({ activeScreen, onScreenChange })
               className={cn(
                 "flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition-all duration-200 min-w-0 flex-1",
                 isActive
-                  ? "text-dental-600 bg-dental-50"
-                  : "text-gray-500 hover:text-dental-600 hover:bg-dental-50"
+                  ? "text-dental-500 bg-gray-800"
+                  : "text-gray-400 hover:text-dental-500 hover:bg-gray-800"
               )}
             >
               <Icon size={20} />

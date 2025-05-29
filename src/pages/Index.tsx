@@ -33,10 +33,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-black flex flex-col">
       {/* Container do App Móvel */}
       <div className="flex-1 flex justify-center">
-        <div className="w-full max-w-md mx-auto bg-gray-50 relative">
+        <div className="w-full max-w-md mx-auto bg-black relative">
           {/* Simulação da Barra de Status (Móvel) */}
           <div className="h-6 bg-black text-white text-xs flex items-center justify-between px-4">
             <span>9:41</span>
@@ -45,15 +45,15 @@ const Index = () => {
           </div>
 
           {/* Cabeçalho do App */}
-          <div className="bg-white border-b border-gray-200 px-4 py-4 shadow-sm">
+          <div className="bg-gray-900 border-b border-gray-800 px-4 py-4 shadow-sm">
             <div className="text-center">
-              <h1 className="text-xl font-bold text-dental-800">Dentefier</h1>
-              <p className="text-sm text-gray-600">Identificação Odontológica Forense</p>
+              <h1 className="text-xl font-bold text-dental-500">Dentefier</h1>
+              <p className="text-sm text-gray-400">Identificação Odontológica Forense</p>
             </div>
           </div>
 
           {/* Área de Conteúdo Principal */}
-          <div className="flex-1 px-4 py-4 pb-20 overflow-y-auto min-h-[calc(100vh-140px)]">
+          <div className="flex-1 px-4 py-4 pb-20 overflow-y-auto min-h-[calc(100vh-140px)] bg-black">
             {renderScreen()}
           </div>
 

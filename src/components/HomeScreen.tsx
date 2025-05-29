@@ -24,7 +24,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       title: 'Relatórios',
       description: 'Visualizar relatórios e histórico',
       action: () => onNavigate('reports'),
-      color: 'bg-emerald-600'
+      color: 'bg-dental-700'
     }
   ];
 
@@ -49,16 +49,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
   return (
     <div className="animate-fade-in space-y-6">
       {/* Seção Hero */}
-      <div className="dental-gradient rounded-2xl p-6 text-white relative overflow-hidden">
+      <div className="dental-gradient rounded-2xl p-6 text-black relative overflow-hidden">
         <div className="forensic-pattern absolute inset-0 opacity-20"></div>
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center animate-pulse-dental">
+            <div className="w-10 h-10 bg-black/20 rounded-full flex items-center justify-center animate-pulse-dental">
               <Microscope className="w-5 h-5" />
             </div>
             <div>
               <h1 className="text-xl font-bold">Bem-vindo ao Dentefier</h1>
-              <p className="text-blue-100 text-sm">Sistema de Identificação Forense</p>
+              <p className="text-black/80 text-sm">Sistema de Identificação Forense</p>
             </div>
           </div>
           
@@ -71,22 +71,22 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
 
       {/* Ações Rápidas */}
       <div className="space-y-3">
-        <h2 className="text-lg font-semibold text-gray-800">Ações Rápidas</h2>
+        <h2 className="text-lg font-semibold text-white">Ações Rápidas</h2>
         {quickActions.map((action, index) => {
           const Icon = action.icon;
           return (
             <button
               key={index}
               onClick={action.action}
-              className="w-full bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 active:scale-95"
+              className="w-full bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-800 hover:shadow-md transition-all duration-200 active:scale-95"
             >
               <div className="flex items-center gap-4">
                 <div className={`w-12 h-12 ${action.color} rounded-lg flex items-center justify-center`}>
-                  <Icon className="w-6 h-6 text-white" />
+                  <Icon className="w-6 h-6 text-black" />
                 </div>
                 <div className="flex-1 text-left">
-                  <h3 className="font-semibold text-gray-800">{action.title}</h3>
-                  <p className="text-gray-600 text-sm">{action.description}</p>
+                  <h3 className="font-semibold text-white">{action.title}</h3>
+                  <p className="text-gray-400 text-sm">{action.description}</p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-400" />
               </div>
@@ -97,22 +97,22 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
 
       {/* Recursos do Sistema */}
       <div className="space-y-3">
-        <h2 className="text-lg font-semibold text-gray-800">Recursos Principais</h2>
+        <h2 className="text-lg font-semibold text-white">Recursos Principais</h2>
         <div className="space-y-3">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div 
                 key={index}
-                className="bg-white rounded-xl p-4 shadow-sm border border-gray-100"
+                className="bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-800"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-dental-100 rounded-lg flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-dental-600" />
+                  <div className="w-10 h-10 bg-dental-500/20 rounded-lg flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-dental-500" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">{feature.title}</h3>
-                    <p className="text-gray-600 text-sm">{feature.description}</p>
+                    <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               </div>
@@ -122,16 +122,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       </div>
 
       {/* Estatísticas */}
-      <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-        <h3 className="font-semibold text-gray-800 mb-3">Status do Sistema</h3>
+      <div className="bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-800">
+        <h3 className="font-semibold text-white mb-3">Status do Sistema</h3>
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center">
-            <div className="text-2xl font-bold text-dental-600">24</div>
-            <div className="text-xs text-gray-600">Casos Ativos</div>
+            <div className="text-2xl font-bold text-dental-500">24</div>
+            <div className="text-xs text-gray-400">Casos Ativos</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-600">156</div>
-            <div className="text-xs text-gray-600">Identificações</div>
+            <div className="text-2xl font-bold text-dental-500">156</div>
+            <div className="text-xs text-gray-400">Identificações</div>
           </div>
         </div>
       </div>
