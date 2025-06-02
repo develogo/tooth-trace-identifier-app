@@ -1,11 +1,15 @@
 
 import React, { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 import Navigation from '@/components/Navigation';
 import HomeScreen from '@/components/HomeScreen';
 import AboutScreen from '@/components/AboutScreen';
 import ContactScreen from '@/components/ContactScreen';
 import IdentificationScreen from '@/components/IdentificationScreen';
 import ReportsScreen from '@/components/ReportsScreen';
+import LoginForm from '@/components/LoginForm';
+import { LogOut, User } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 /**
  * Componente Principal da Aplicação - Dentefier Mobile
@@ -14,23 +18,48 @@ import ReportsScreen from '@/components/ReportsScreen';
  */
 const Index = () => {
   const [activeScreen, setActiveScreen] = useState<'home' | 'identification' | 'reports' | 'about' | 'contact'>('home');
+  const { user, logout, isAuthenticated } = useAuth();
+  const [showLoginForScreen, setShowLoginForScreen] = useState<string | null>(null);
+
+  const handleScreenChange = (screen: 'home' | 'identification' | 'reports' | 'about' | 'contact') => {
+    // Verificar se a tela requer autenticação
+    if ((screen === 'identification' || screen === 'reports') && !isAuthenticated) {
+      setShowLoginForScreen(screen);
+      return;
+    }
+    
+    setActiveScreen(screen);
+    setShowLoginForScreen(null);
+  };
+
+  const handleLoginSuccess = () => {
+    if (showLoginForScreen) {
+      setActiveScreen(showLoginForScreen as any);
+      setShowLoginForScreen(null);
+    }
+  };
 
   const renderScreen = () => {
     switch (activeScreen) {
       case 'home':
-        return <HomeScreen onNavigate={setActiveScreen} />;
+        return <HomeScreen onNavigate={handleScreenChange} />;
       case 'identification':
-        return <IdentificationScreen />;
+        return isAuthenticated ? <IdentificationScreen /> : <div>Acesso negado</div>;
       case 'reports':
-        return <ReportsScreen />;
+        return isAuthenticated ? <ReportsScreen /> : <div>Acesso negado</div>;
       case 'about':
         return <AboutScreen />;
       case 'contact':
         return <ContactScreen />;
       default:
-        return <HomeScreen onNavigate={setActiveScreen} />;
+        return <HomeScreen onNavigate={handleScreenChange} />;
     }
   };
+
+  // Se está tentando acessar uma tela protegida sem estar logado
+  if (showLoginForScreen) {
+    return <LoginForm onLoginSuccess={handleLoginSuccess} />;
+  }
 
   return (
     <div className="min-h-screen bg-black flex flex-col">
@@ -46,9 +75,28 @@ const Index = () => {
 
           {/* Cabeçalho do App */}
           <div className="bg-gray-900 border-b border-gray-800 px-4 py-4 shadow-sm">
-            <div className="text-center">
-              <h1 className="text-xl font-bold text-dental-500">Dentefier</h1>
-              <p className="text-sm text-gray-400">Identificação Odontológica Forense</p>
+            <div className="flex items-center justify-between">
+              <div className="text-center flex-1">
+                <h1 className="text-xl font-bold text-yellow-500">Dentefier</h1>
+                <p className="text-sm text-gray-400">Identificação Odontológica Forense</p>
+              </div>
+              
+              {isAuthenticated && (
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 text-xs text-gray-300">
+                    <User size={14} />
+                    <span>{user?.name}</span>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={logout}
+                    className="text-gray-400 hover:text-yellow-500 p-1"
+                  >
+                    <LogOut size={16} />
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
 
@@ -58,7 +106,7 @@ const Index = () => {
           </div>
 
           {/* Navegação Inferior (Móvel) */}
-          <Navigation activeScreen={activeScreen} onScreenChange={setActiveScreen} />
+          <Navigation activeScreen={activeScreen} onScreenChange={handleScreenChange} />
         </div>
       </div>
     </div>
